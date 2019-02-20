@@ -1,4 +1,4 @@
-package com.auditservice.controller.test;
+/*package com.auditservice.controller.test;
 
 import static org.junit.Assert.*;
 
@@ -55,7 +55,6 @@ public class SampleTest {
 		String content = mvcResult.getResponse().getContentAsString();
 		/*Product[] productlist = super.mapFromJson(content, Product[].class);
 	   assertTrue(productlist.length > 0);*/
-		assertTrue(true);
-	}
+		//assertTrue(true);
+	//} 
 
-}
