@@ -42,5 +42,10 @@ pipeline {
 				}	
    				
     }
+	stage('Force Deploy') {
+         steps{
+                sh 'aws ecs update-service --region us-east-1 --cluster sunil-audit --service audit-service --force-new-deployment'
+			}
+ }
 }
 }
