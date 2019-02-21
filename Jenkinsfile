@@ -47,5 +47,10 @@ pipeline {
                 sh 'aws ecs update-service --region us-east-1 --cluster sunil-audit --service audit-service --force-new-deployment'
 			}
      }
+	 stage('Remove Image from Server') {
+         steps{
+                sh 'docker image rm sunildocker2019/audit-docker:latest'
+			}
+     }
   }
 }
