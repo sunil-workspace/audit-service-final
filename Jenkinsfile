@@ -31,6 +31,7 @@ pipeline {
                steps{
 			   sh 'sudo docker build -t sunildocker2019/audit-docker:${BUILD_NUMBER} .'
                sh 'docker tag sunildocker2019/audit-docker:${BUILD_NUMBER} sunildocker2019/audit-docker:latest'
+			   sh 'docker tag sunildocker2019/audit-docker:${BUILD_NUMBER} 012515449968.dkr.ecr.us-east-1.amazonaws.com/audit-repo:latest'
 				
 				}
           }
@@ -39,6 +40,7 @@ pipeline {
                 sh 'docker login -u sunildocker2019 -p Docker@2019'
 				sh 'docker push sunildocker2019/audit-docker:${BUILD_NUMBER}'
                 sh 'docker push sunildocker2019/audit-docker:latest'
+				sh 'docker push 012515449968.dkr.ecr.us-east-1.amazonaws.com/audit-repo:latest'
 				}	
    				
     }
