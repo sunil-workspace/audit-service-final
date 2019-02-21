@@ -33,6 +33,7 @@ pipeline {
           }
          stage('Push Image'){
                 sh 'docker login -u sunildocker2019 -p Sunil@1105'
-                sh 'docker push sunildocker2019/audit-docker:latest'		
+                sh 'docker push sunildocker2019/audit-docker:latest'
+			}				
     }
 }
