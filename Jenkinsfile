@@ -36,6 +36,7 @@ pipeline {
          stage('Push Image'){
 		 steps{
                 sh 'docker login -u sunildocker2019 -p Sunil@1105'
+				sh 'docker push sunildocker2019/audit-docker:${BUILD_NUMBER}'
                 sh 'docker push sunildocker2019/audit-docker:latest'
 				}
 			}				
