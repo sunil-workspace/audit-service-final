@@ -28,12 +28,16 @@ pipeline {
             }
         } 
          stage('Build Image'){
-                sh 'sudo docker build -t sunildocker2019/audit-docker:${BUILD_NUMBER} .'
+               steps{
+			   sh 'sudo docker build -t sunildocker2019/audit-docker:${BUILD_NUMBER} .'
                 sh 'docker tag sunildocker2019/audit-docker:${BUILD_NUMBER} sunildocker2019/audit-docker:latest'
+				}
           }
          stage('Push Image'){
+		 steps{
                 sh 'docker login -u sunildocker2019 -p Sunil@1105'
                 sh 'docker push sunildocker2019/audit-docker:latest'
+				}
 			}				
     }
 }
