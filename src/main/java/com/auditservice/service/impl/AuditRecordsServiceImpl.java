@@ -37,6 +37,7 @@ public class AuditRecordsServiceImpl implements AuditRecordsService {
 		return auditRecords;
 	}
 
+	//this method not required
 	@Override
 	public AuditRecord getAuditRecordsFromDB(String userId) {
 //		JSONObject jsonObj = new JSONObject();

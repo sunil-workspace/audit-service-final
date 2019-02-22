@@ -54,6 +54,7 @@ public class AuditServiceController {
 	}
 
 	//added test method for health check
+	//it return 'Success Page' if it passes health check
 	@RequestMapping(method=RequestMethod.GET, value="/test" )
 	public ResponseEntity<?> healthCheck(){
 		System.out.println("test");
