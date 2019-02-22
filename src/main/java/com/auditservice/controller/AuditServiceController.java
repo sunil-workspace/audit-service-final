@@ -53,7 +53,13 @@ public class AuditServiceController {
 		return new ResponseEntity<>(auditRecords, headers, HttpStatus.OK);
 	}
 
-
+	//added test method for health check
+	@RequestMapping(method=RequestMethod.GET, value="/test" )
+	public ResponseEntity<?> healthCheck(){
+		System.out.println("test");
+		return new ResponseEntity<>("Success Page", HttpStatus.OK);
+	}
+	
 	@RequestMapping(method=RequestMethod.GET, value="/audits/{userId}" )
 	//public ResponseEntity<String> empiSearchByLocalId(@RequestParam("localId") String localId, @RequestParam("systemCode") String systemCode) {
 	public ResponseEntity<?> getAuditRecords(@PathVariable("userId") String userId){
