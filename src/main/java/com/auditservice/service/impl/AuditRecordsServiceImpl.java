@@ -32,7 +32,7 @@ public class AuditRecordsServiceImpl implements AuditRecordsService {
 			 auditRecords =  auditMongoRepository.findAll();
 		} catch(Exception e) {
 			e.printStackTrace();
-			throw new AuditServiceException("Error occured in getAllAuditRecordsFromDB: " + e);
+			throw new AuditServiceException("Error occured in getAllAuditRecordsFromDB,,: " + e);
 		}
 		return auditRecords;
 	}
