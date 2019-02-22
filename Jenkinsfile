@@ -50,7 +50,6 @@ pipeline {
 			}
      }
 	 
-     }
 	     stage('Remove Image from Server') {
          steps{
                 sh 'docker image rm sunildocker2019/audit-docker:latest'
