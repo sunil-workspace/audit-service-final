@@ -3,6 +3,7 @@ package com.auditservice.controller;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -63,17 +64,18 @@ public class AuditServiceController {
 	}
 	
 	@RequestMapping(method=RequestMethod.GET, value="/audits/{userId}" )
-	//public ResponseEntity<String> empiSearchByLocalId(@RequestParam("localId") String localId, @RequestParam("systemCode") String systemCode) {
+	//public ResponseEntity<String> empiSearchByLocalId(@RequestParam("localId") String localId, @RequestParam("systemCode) String systemCode) {
 	public ResponseEntity<?> getAuditRecords(@PathVariable("userId") String userId){
 		JSONObject jsonObj = new JSONObject();
 		HttpHeaders headers = new HttpHeaders();
+		AuditRecord record = new AuditRecord();
 		try {
-			//Record record = auditRecordsServiceImpl.getAuditRecordsFromDB(userId);
+			record = auditRecordsServiceImpl.getAuditRecordsFromDB(userId);
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
 
-		return new ResponseEntity<>(jsonObj.toString(), headers, HttpStatus.OK);
+		return new ResponseEntity<>(record, headers, HttpStatus.OK);
 	}
 
 

@@ -2,6 +2,7 @@ package com.auditservice.service.impl;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.json.JSONObject;
 import org.slf4j.Logger;
@@ -40,13 +41,8 @@ public class AuditRecordsServiceImpl implements AuditRecordsService {
 	//this method not required
 	@Override
 	public AuditRecord getAuditRecordsFromDB(String userId) {
-//		JSONObject jsonObj = new JSONObject();
-//		try {
-//			return auditMongoRepository.findById(userId);
-//		} catch(Exception e) {
-//			e.printStackTrace();
-//		}
-		return null;
+		return  auditMongoRepository.findByUserId(userId);
+		
 	}
 
 	@Override

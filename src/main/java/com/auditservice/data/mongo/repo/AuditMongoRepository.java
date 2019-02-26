@@ -7,4 +7,5 @@ import com.auditservice.dto.AuditRecord;
 
 @Repository
 public interface AuditMongoRepository extends MongoRepository<AuditRecord, String> {
+	public AuditRecord findByUserId(String userId);
 }
