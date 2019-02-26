@@ -58,7 +58,8 @@ public class AuditServiceController {
 	@RequestMapping(method=RequestMethod.GET, value="/test" )
 	public ResponseEntity<?> healthCheck(){
 		System.out.println("test");
-		return new ResponseEntity<>("Success Page", HttpStatus.OK);
+		String res = "Success Page";
+		return new ResponseEntity<>(res.toString(), HttpStatus.OK);
 	}
 	
 	@RequestMapping(method=RequestMethod.GET, value="/audits/{userId}" )
@@ -77,6 +78,29 @@ public class AuditServiceController {
 
 
 	@RequestMapping(method=RequestMethod.POST, value="/audits")
+	public ResponseEntity<?> postAuditRecords(@RequestBody AuditRecord record){
+		JSONObject json = new JSONObject();
+		HttpHeaders headers = new HttpHeaders();
+
+			try {
+				record = auditRecordsServiceImpl.postAuditRecordsToDB(record);
+				if (record.getUserId() != null) {
+					json.put("success", "Record has been Created for User " + record.getUserId());
+					return new ResponseEntity<>(json.toString(), headers, HttpStatus.CREATED);
+				} else {
+					json.put("Not Successful ", "Issue creating Record for User " + record.getUserId());
+					return new ResponseEntity<>(json.toString(),headers,  HttpStatus.CONFLICT);
+				}
+			} catch (JSONException e) {
+				e.printStackTrace();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		return new ResponseEntity<>(json.toString(), headers,  HttpStatus.CREATED);
+	}
+	
+	@RequestMapping(method=RequestMethod.POST, value="/audits2")
+	//public ResponseEntity<?> postAuditRecords(@RequestBody AuditRecord record){
 	public ResponseEntity<?> postAuditRecords(@RequestBody AuditRecord record, @RequestHeader("Authorization") String jwtToken){
 		JSONObject json = new JSONObject();
 		HttpHeaders headers = new HttpHeaders();
