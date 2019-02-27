@@ -14,6 +14,7 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
@@ -64,6 +65,7 @@ public class AuditServiceController {
 	}
 	
 	@RequestMapping(method=RequestMethod.GET, value="/audits/{userId}" )
+	@CrossOrigin(origins="*") 
 	//public ResponseEntity<String> empiSearchByLocalId(@RequestParam("localId") String localId, @RequestParam("systemCode) String systemCode) {
 	public ResponseEntity<?> getAuditRecords(@PathVariable("userId") String userId){
 		JSONObject jsonObj = new JSONObject();
