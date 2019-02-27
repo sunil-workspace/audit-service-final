@@ -40,6 +40,7 @@ public class AuditServiceController {
 	AuditRecordsServiceImpl auditRecordsServiceImpl;
 
 	@RequestMapping(method=RequestMethod.GET, value="/audits" )
+	@CrossOrigin(origins="*")
 	public ResponseEntity<?> getAllAuditRecords(){
 		/*public ResponseEntity<?> getAllAuditRecords(@RequestHeader(value="jwt") String jwt, @RequestParam("userId") String userId, @RequestParam("apiPath") String apiPath,
 			@RequestParam("apiMethod") String apiMethod, @RequestParam("apiCallTimeFrom") String apiCallTimeFrom, @RequestParam("apiCallTimeTo") String apiCallTimeTo,
@@ -65,8 +66,7 @@ public class AuditServiceController {
 	}
 	
 	@RequestMapping(method=RequestMethod.GET, value="/audits/{userId}" )
-	@CrossOrigin(origins="*") 
-	//public ResponseEntity<String> empiSearchByLocalId(@RequestParam("localId") String localId, @RequestParam("systemCode) String systemCode) {
+	@CrossOrigin(origins="*")
 	public ResponseEntity<?> getAuditRecords(@PathVariable("userId") String userId){
 		JSONObject jsonObj = new JSONObject();
 		HttpHeaders headers = new HttpHeaders();
