@@ -82,6 +82,7 @@ public class AuditServiceController {
 
 
 	@RequestMapping(method=RequestMethod.POST, value="/audits")
+	@CrossOrigin(origins="*")
 	public ResponseEntity<?> postAuditRecords(@RequestBody AuditRecord record){
 		JSONObject json = new JSONObject();
 		HttpHeaders headers = new HttpHeaders();
